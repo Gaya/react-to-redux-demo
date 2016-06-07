@@ -1,89 +1,65 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Events from '../core/events';
+import { fetchContacts } from '../actions/contacts';
 
 import Loading from './loading';
 import Favourite from './favourite-switch';
 import Twitter from './twitter-input';
 
 const ContactDetails = React.createClass({
-  getInitialState() {
-    return {
-      loading: true,
-      name: null,
-      favourite: false,
-      twitter: null,
-    };
-  },
-
   componentDidMount() {
-    fetch('/contacts.json')
-      .then((response) => response.json())
-      .then(this.filterContactsResult)
-      .then(this.setContactResult);
-
-    Events.addListener('changeFavourite', this.handleFavourite);
-  },
-
-  componentWillUnmount() {
-    Events.removeListener('changeFavourite', this.handleFavourite);
-  },
-
-  handleFavourite(isActive) {
-    this.setState({
-      favourite: isActive,
-    });
-  },
-
-  filterContactsResult(contacts) {
-    return contacts.find(contact => contact.id === this.getContactId());
-  },
-
-  setContactResult(contact) {
-    this.setState({
-      loading: false,
-      ...contact,
-    });
-  },
-
-  getContactId() {
-    return parseInt(this.props.params.contactId);
-  },
-
-  twitter() {
-    return <Twitter contactId={ this.state.id } username={this.state.twitter} />;
+    if (this.props.id === null) {
+      this.props.fetchContacts();
+    }
   },
 
   render() {
-    if (this.state.loading) {
+    let { loading, name, id, favourite, twitter } = this.props;
+
+    if (loading) {
       return <Loading>Loading contact</Loading>;
     }
 
     return <section>
       <h2>
-        { this.state.name }
+        { name }
 
-        <Favourite contactId={ this.state.id } on={ this.state.favourite } />
+        <Favourite contactId={ id } on={ favourite } />
       </h2>
 
 
-      {this.twitter()}
+      <Twitter contactId={ id } username={ twitter } />
     </section>;
   },
 });
 
-function mapStateToProps(state) {
-  return {
+function mapStateToProps(state, ownProps) {
+  let contact = Object.assign({}, {
+    id: null,
     loading: true,
     name: null,
     favourite: false,
     twitter: null,
+  }, state.contacts.items.find(
+    contact => contact.id === parseInt(ownProps.params.contactId)
+  ));
+
+  return {
+    id: contact.id,
+    loading: contact.loading,
+    name: contact.name,
+    favourite: contact.favourite,
+    twitter: contact.twitter,
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return {};
+  return {
+    fetchContacts() {
+      dispatch(fetchContacts());
+    },
+  };
 }
 
 export default connect(

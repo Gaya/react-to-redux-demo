@@ -7,8 +7,10 @@ const id = (state = null, action) => {
   }
 };
 
-const loading = (state = false, action) => {
+const loading = (state = true, action) => {
   switch (action.type) {
+    case 'ADD_CONTACTS':
+      return false;
     default:
       return state;
   }
