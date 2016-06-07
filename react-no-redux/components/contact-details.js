@@ -1,6 +1,8 @@
 import React from 'react';
 
 import Loading from './loading';
+import Favourite from './favourite-switch';
+import Twitter from './twitter-input';
 
 export default React.createClass({
   getInitialState() {
@@ -20,10 +22,10 @@ export default React.createClass({
   },
 
   filterContactsResult(contacts) {
-    return contacts.filter(contact => contact.id === this.getContactId())[0];
+    return contacts.find(contact => contact.id === this.getContactId());
   },
 
-  setContactsResult(contact) {
+  setContactResult(contact) {
     this.setState({
       loading: false,
       ...contact,
@@ -31,7 +33,15 @@ export default React.createClass({
   },
 
   getContactId() {
-    return this.props.params.contactId;
+    return parseInt(this.props.params.contactId);
+  },
+
+  twitter() {
+    if (!this.state.twitter) {
+      return null;
+    }
+
+    return <Twitter username={this.state.twitter} />;
   },
 
   render() {
@@ -39,6 +49,11 @@ export default React.createClass({
       return <Loading>Loading contact</Loading>;
     }
 
-    return <section>I am a contact!</section>;
+    return <section>
+      <h2>{ this.state.name }</h2>
+      <Favourite on={ this.state.favourite } />
+
+      {this.twitter()}
+    </section>;
   },
 });

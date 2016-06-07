@@ -3,19 +3,19 @@
     "id": 1,
     "name": "Gaya",
     "favourite": false,
-    "twitter": "@gayaninja"
+    "twitter": "gayaninja"
   },
   {
     "id": 2,
     "name": "Koen",
     "favourite": true,
-    "twitter": "@mesoptier"
+    "twitter": "mesoptier"
   },
   {
     "id": 3,
     "name": "Roel",
     "favourite": false,
-    "twitter": "@duijnroel"
+    "twitter": "duijnroel"
   },
   {
     "id": 4,

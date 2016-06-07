@@ -34,7 +34,7 @@ export default React.createClass({
     }
 
     return <ul className='list-group'>
-      {this.state.contacts.map(contact => <Contact { ...contact } />)}
+      {this.state.contacts.map(contact => <Contact key={contact.id} { ...contact } />)}
     </ul>;
   },
 
