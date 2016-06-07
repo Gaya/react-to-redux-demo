@@ -50,8 +50,12 @@ export default React.createClass({
     }
 
     return <section>
-      <h2>{ this.state.name }</h2>
-      <Favourite on={ this.state.favourite } />
+      <h2>
+        { this.state.name }
+
+        <Favourite on={ this.state.favourite } />
+      </h2>
+
 
       {this.twitter()}
     </section>;

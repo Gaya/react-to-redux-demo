@@ -13,12 +13,14 @@ export default React.createClass({
     });
   },
 
+  classNames(isActive) {
+    return 'btn btn-default btn-small' + (isActive ? ' btn-success' : '');
+  },
+
   render() {
-    return <fieldset>
-      <label onClick={this.onChange}>
-        favourite
-      </label>
-      <input type='checkbox' onChange={this.onChange} checked={ this.state.on } />
-    </fieldset>;
+    return <button type='button' onClick={this.onChange} className={this.classNames(this.state.on)}
+                   style={{ marginLeft: '20px', }}>
+        <span className='glyphicon glyphicon-star' aria-hidden='true'></span>
+      </button>;
   },
 });
