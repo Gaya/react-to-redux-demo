@@ -25,6 +25,8 @@ const name = (state = null, action) => {
 
 const favourite = (state = false, action) => {
   switch (action.type) {
+    case 'FAVOURITE_CONTACT':
+      return action.isActive;
     default:
       return state;
   }
