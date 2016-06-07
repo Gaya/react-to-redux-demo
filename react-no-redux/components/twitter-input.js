@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Events from '../core/events';
+
 export default React.createClass({
   getInitialState() {
     return {
@@ -8,8 +10,12 @@ export default React.createClass({
   },
 
   onChange(e) {
+    var username = e.target.value;
+
+    Events.emit('changeTwitter', username, this.props.contactId);
+
     this.setState({
-      username: e.target.value,
+      username: username,
     });
   },
 

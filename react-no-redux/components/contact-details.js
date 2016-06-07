@@ -51,11 +51,7 @@ export default React.createClass({
   },
 
   twitter() {
-    if (!this.state.twitter) {
-      return null;
-    }
-
-    return <Twitter username={this.state.twitter} />;
+    return <Twitter contactId={ this.state.id } username={this.state.twitter} />;
   },
 
   render() {
