@@ -2,17 +2,20 @@
   {
     "id": 1,
     "name": "Gaya",
-    "favourite": false
+    "favourite": false,
+    "twitter": "@gayaninja"
   },
   {
     "id": 2,
     "name": "Koen",
-    "favourite": true
+    "favourite": true,
+    "twitter": "@mesoptier"
   },
   {
     "id": 3,
     "name": "Roel",
-    "favourite": false
+    "favourite": false,
+    "twitter": "@duijnroel"
   },
   {
     "id": 4,
