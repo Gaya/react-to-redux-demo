@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Events from '../core/events';
+
 export default React.createClass({
   getInitialState() {
     return {
@@ -8,8 +10,12 @@ export default React.createClass({
   },
 
   onChange() {
+    var changeTo = !this.state.on;
+
+    Events.emit('changeFavourite', changeTo, this.props.contactId);
+
     this.setState({
-      on: !this.state.on,
+      on: changeTo,
     });
   },
 

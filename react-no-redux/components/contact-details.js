@@ -53,7 +53,7 @@ export default React.createClass({
       <h2>
         { this.state.name }
 
-        <Favourite on={ this.state.favourite } />
+        <Favourite contactId={ this.state.id } on={ this.state.favourite } />
       </h2>
 
 
