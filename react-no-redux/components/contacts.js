@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Events from '../core/events';
+
 import Loading from './loading';
 import Contact from './contacts-result';
 
@@ -15,6 +17,27 @@ export default React.createClass({
     fetch('/contacts.json')
       .then((response) => response.json())
       .then(this.setContactsResult);
+
+    Events.addListener('changeFavourite', this.handleFavourite);
+  },
+
+  componentWillUnmount() {
+    Events.removeListener('changeFavourite', this.handleFavourite);
+  },
+
+  handleFavourite(isActive, contactId) {
+    this.setState({
+      contacts: this.state.contacts.map(contact => {
+        if (contact.id === contactId) {
+          return {
+            ...contact,
+            favourite: isActive,
+          };
+        }
+
+        return contact;
+      }),
+    });
   },
 
   setContactsResult(contacts) {

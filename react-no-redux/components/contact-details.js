@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Events from '../core/events';
+
 import Loading from './loading';
 import Favourite from './favourite-switch';
 import Twitter from './twitter-input';
@@ -19,6 +21,18 @@ export default React.createClass({
       .then((response) => response.json())
       .then(this.filterContactsResult)
       .then(this.setContactResult);
+
+    Events.addListener('changeFavourite', this.handleFavourite);
+  },
+
+  componentWillUnmount() {
+    Events.removeListener('changeFavourite', this.handleFavourite);
+  },
+
+  handleFavourite(isActive) {
+    this.setState({
+      favourite: isActive,
+    });
   },
 
   filterContactsResult(contacts) {
