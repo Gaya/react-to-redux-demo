@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "scripts": {
+    "serve": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server --content-base public/"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Gaya/react-to-redux-demo.git"
