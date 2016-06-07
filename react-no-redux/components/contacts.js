@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Contact from './contacts-result';
+
 export default React.createClass({
   getInitialState() {
     return {
@@ -25,7 +27,9 @@ export default React.createClass({
     if (this.state.loading) {
       return <div className='progress'>
         <div className='progress-bar progress-bar-info progress-bar-striped active'
-             style={{ width: '100%', }} />
+             style={{ width: '100%', }}>
+          Loading contacts
+        </div>
       </div>;
     }
 
@@ -33,7 +37,9 @@ export default React.createClass({
       return <section>No contacts found.</section>;
     }
 
-    return <section>Contacts list</section>;
+    return <ul className='list-group'>
+      {this.state.contacts.map(contact => <Contact { ...contact } />)}
+    </ul>;
   },
 
   render() {

@@ -1,18 +1,22 @@
 [
   {
     "id": 1,
-    "name": "Gaya"
+    "name": "Gaya",
+    "favourite": false
   },
   {
     "id": 2,
-    "name": "Koen"
+    "name": "Koen",
+    "favourite": true
   },
   {
     "id": 3,
-    "name": "Roel"
+    "name": "Roel",
+    "favourite": false
   },
   {
     "id": 4,
-    "name": "Wouter"
+    "name": "Wouter",
+    "favourite": false
   }
 ]
