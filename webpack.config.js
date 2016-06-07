@@ -9,4 +9,13 @@ module.exports = {
     publicPath: '/assets/',
     filename: 'bundle.js',
   },
+  module: {
+    loaders: [
+      {
+        test: /.jsx?$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+      },
+    ],
+  },
 };
