@@ -16,7 +16,7 @@ import Contact from './components/contact-details';
 
 import Twitter from './components/twitter-accounts';
 
-const reducers = {};
+import reducers from './reducers';
 
 const store = createStore(
   combineReducers({
