@@ -2,16 +2,15 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 
+import Contacts from './components/contacts';
+import Contact from './components/contact';
+
 const App = props => (
   <section>
     <h1>Contacts in React</h1>
     { props.children }
   </section>
 );
-
-const Contacts = props => props.children || <section>Contacts list</section>;
-
-const Contact = () => <section>I am a contact!</section>;
 
 const NoMatch = () => <section>Sorry, page not found!</section>;
 
