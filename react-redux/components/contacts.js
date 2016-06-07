@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { addContacts } from '../actions/contacts';
+import { fetchContacts, addContacts } from '../actions/contacts';
 
 import Loading from './loading';
 import Contact from './contacts-result';
@@ -45,12 +45,16 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchContacts() {
+    fetchContactsJson() {
       fetch('/contacts.json')
         .then((response) => response.json())
         .then((contacts) => {
           dispatch(addContacts(contacts));
         });
+    },
+
+    fetchContacts() {
+      dispatch(fetchContacts());
     },
   };
 }
