@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import Events from '../core/events';
 
@@ -6,7 +7,7 @@ import Loading from './loading';
 import Favourite from './favourite-switch';
 import Twitter from './twitter-input';
 
-export default React.createClass({
+const ContactDetails = React.createClass({
   getInitialState() {
     return {
       loading: true,
@@ -71,3 +72,21 @@ export default React.createClass({
     </section>;
   },
 });
+
+function mapStateToProps(state) {
+  return {
+    loading: true,
+    name: null,
+    favourite: false,
+    twitter: null,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {};
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ContactDetails);

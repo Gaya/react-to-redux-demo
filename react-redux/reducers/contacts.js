@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { contact } from './contact';
 
 const loading = (state = true, action) => {
   switch (action.type) {
@@ -14,7 +15,9 @@ const items = (state = [], action) => {
     case 'ADD_CONTACTS':
       return [
         ...state,
-        ...action.contacts,
+        ...action.contacts.map(
+          contactAction => contact(contactAction, action)
+        ),
       ];
     default:
       return state;
