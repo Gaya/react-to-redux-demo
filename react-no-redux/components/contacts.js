@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Loading from './loading';
 import Contact from './contacts-result';
 
 export default React.createClass({
@@ -25,12 +26,7 @@ export default React.createClass({
 
   list() {
     if (this.state.loading) {
-      return <div className='progress'>
-        <div className='progress-bar progress-bar-info progress-bar-striped active'
-             style={{ width: '100%', }}>
-          Loading contacts
-        </div>
-      </div>;
+      return <Loading>Loading contacts</Loading>;
     }
 
     if (this.state.contacts.length === 0) {
