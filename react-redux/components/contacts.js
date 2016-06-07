@@ -1,67 +1,61 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-import Events from '../core/events';
+import { addContacts } from '../actions/contacts';
 
 import Loading from './loading';
 import Contact from './contacts-result';
 
-export default React.createClass({
-  getInitialState() {
-    return {
-      contacts: [],
-      loading: true,
-    };
-  },
-
+const Contacts = React.createClass({
   componentDidMount() {
-    fetch('/contacts.json')
-      .then((response) => response.json())
-      .then(this.setContactsResult);
+    let { contacts } = this.props;
 
-    Events.addListener('changeFavourite', this.handleFavourite);
+    if (contacts && contacts.length === 0) {
+      this.props.fetchContacts();
+    }
   },
 
-  componentWillUnmount() {
-    Events.removeListener('changeFavourite', this.handleFavourite);
-  },
+  render() {
+    let { children, loading, contacts } = this.props;
 
-  handleFavourite(isActive, contactId) {
-    this.setState({
-      contacts: this.state.contacts.map(contact => {
-        if (contact.id === contactId) {
-          return {
-            ...contact,
-            favourite: isActive,
-          };
-        }
+    if (children) {
+      return children;
+    }
 
-        return contact;
-      }),
-    });
-  },
-
-  setContactsResult(contacts) {
-    this.setState({
-      loading: false,
-      contacts,
-    });
-  },
-
-  list() {
-    if (this.state.loading) {
+    if (loading) {
       return <Loading>Loading contacts</Loading>;
     }
 
-    if (this.state.contacts.length === 0) {
+    if (contacts && contacts.length === 0) {
       return <section>No contacts found.</section>;
     }
 
     return <ul className='list-group'>
-      {this.state.contacts.map(contact => <Contact key={contact.id} { ...contact } />)}
+      {contacts.map(contact => <Contact key={contact.id} { ...contact } />)}
     </ul>;
   },
-
-  render() {
-    return this.props.children || this.list();
-  },
 });
+
+function mapStateToProps(state) {
+  return {
+    loading: state.contacts.loading,
+    contacts: state.contacts.items,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    fetchContacts() {
+      fetch('/contacts.json')
+        .then((response) => response.json())
+        .then((contacts) => {
+          dispatch(addContacts(contacts));
+        });
+    },
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Contacts);
