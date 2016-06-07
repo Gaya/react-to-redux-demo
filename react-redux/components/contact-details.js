@@ -1,8 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { fetchContacts } from '../actions/contacts';
-
 import Loading from './loading';
 import Favourite from './favourite-switch';
 import Twitter from './twitter-input';
