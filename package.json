@@ -1,0 +1,16 @@
+{
+  "name": "react-to-redux-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gaya/react-to-redux-demo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gaya/react-to-redux-demo/issues"
+  },
+  "homepage": "https://github.com/Gaya/react-to-redux-demo#readme"
+}
