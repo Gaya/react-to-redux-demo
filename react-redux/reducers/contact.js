@@ -34,6 +34,8 @@ const favourite = (state = false, action) => {
 
 const twitter = (state = null, action) => {
   switch (action.type) {
+    case 'CHANGE_TWITTER':
+      return action.handle;
     default:
       return state;
   }

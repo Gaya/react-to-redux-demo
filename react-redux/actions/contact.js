@@ -3,3 +3,9 @@ export const favouriteContact = (id, isActive) => ({
   id,
   isActive,
 });
+
+export const changeTwitterHandle = (id, handle) => ({
+  type: 'CHANGE_TWITTER',
+  id,
+  handle,
+});

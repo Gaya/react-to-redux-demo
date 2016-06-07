@@ -13,6 +13,7 @@ const loading = (state = true, action) => {
 const items = (state = [], action) => {
   switch (action.type) {
     case 'FAVOURITE_CONTACT':
+    case 'CHANGE_TWITTER':
       return [
         ...state.map(
           stateContact => {

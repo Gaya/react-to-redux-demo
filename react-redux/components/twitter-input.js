@@ -1,22 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-import Events from '../core/events';
+import { changeTwitterHandle } from '../actions/contact';
 
-export default React.createClass({
-  getInitialState() {
-    return {
-      username: this.props.username || null,
-    };
-  },
-
+const TwitterInput = React.createClass({
   onChange(e) {
-    var username = e.target.value;
-
-    Events.emit('changeTwitter', username, this.props.contactId);
-
-    this.setState({
-      username: username,
-    });
+    this.props.changeTwitter(e.target.value);
   },
 
   render() {
@@ -24,8 +13,21 @@ export default React.createClass({
       <div className='input-group input-group-sm'>
         <span className='input-group-addon'>@</span>
         <input type='text' className='form-control' placeholder='Username'
-               value={ this.state.username } onChange={this.onChange} />
+               value={ this.props.username } onChange={this.onChange} />
       </div>
     </fieldset>;
   },
 });
+
+function mapDispatchToProps(dispatch, ownProps) {
+  return {
+    changeTwitter(handle) {
+      dispatch(changeTwitterHandle(ownProps.contactId, handle));
+    },
+  };
+}
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(TwitterInput);
