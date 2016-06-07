@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 
 import Contacts from './components/contacts';
-import Contact from './components/contact';
+import Contact from './components/contact-details';
 
 const App = props => (
   <section>
