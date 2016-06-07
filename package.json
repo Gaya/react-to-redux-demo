@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server --content-base public/ --inline --hot"
+    "serve": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server --content-base public/ --inline --hot --history-api-fallback"
   },
   "repository": {
     "type": "git",
@@ -26,5 +26,8 @@
     "react-dom": "^15.1.0",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
+  },
+  "dependencies": {
+    "react-router": "^2.4.1"
   }
 }
