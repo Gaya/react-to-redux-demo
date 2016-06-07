@@ -12,5 +12,9 @@
   "bugs": {
     "url": "https://github.com/Gaya/react-to-redux-demo/issues"
   },
-  "homepage": "https://github.com/Gaya/react-to-redux-demo#readme"
+  "homepage": "https://github.com/Gaya/react-to-redux-demo#readme",
+  "devDependencies": {
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  }
 }
