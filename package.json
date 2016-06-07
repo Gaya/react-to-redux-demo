@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server --content-base public/"
+    "serve": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server --content-base public/ --inline --hot"
   },
   "repository": {
     "type": "git",
