@@ -9,6 +9,9 @@ export default props => (
         <li>
           <Link to='/contacts'>View contacts</Link>
         </li>
+        <li>
+          <Link to='/twitter'>Twitter accounts</Link>
+        </li>
       </ul>
     </nav>
     { props.children }

@@ -8,6 +8,8 @@ import NoMatch from './components/no-match';
 import Contacts from './components/contacts';
 import Contact from './components/contact-details';
 
+import Twitter from './components/twitter-accounts';
+
 render((
   <Router history={browserHistory}>
     <Route path="/" component={App}>
@@ -15,6 +17,7 @@ render((
       <Route path="contacts" component={Contacts}>
         <Route path="/contact/:contactId" component={Contact}/>
       </Route>
+      <Route path="twitter" component={Twitter} />
       <Route path="*" component={NoMatch}/>
     </Route>
   </Router>
