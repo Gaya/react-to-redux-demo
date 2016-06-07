@@ -1,25 +1,12 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, browserHistory, Link, IndexRoute } from 'react-router';
+import { Router, Route, browserHistory, IndexRoute } from 'react-router';
+
+import App from './components/app';
+import NoMatch from './components/no-match';
 
 import Contacts from './components/contacts';
 import Contact from './components/contact-details';
-
-const App = props => (
-  <section>
-    <h1>Contacts in React</h1>
-    <nav className='navbar navbar-default'>
-      <ul className='nav navbar-nav'>
-        <li>
-          <Link to='/contacts'>View contacts</Link>
-        </li>
-      </ul>
-    </nav>
-    { props.children }
-  </section>
-);
-
-const NoMatch = () => <section>Sorry, page not found!</section>;
 
 render((
   <Router history={browserHistory}>
