@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 export default React.createClass({
   favourite(isFavourite) {
@@ -12,7 +13,9 @@ export default React.createClass({
   render() {
     return <li className='list-group-item'>
       { this.favourite(this.props.favourite) }
-      <strong>{ this.props.name }</strong>
+      <Link to={`/contact/${this.props.id}`}>
+        { this.props.name }
+      </Link>
     </li>;
   },
 });
