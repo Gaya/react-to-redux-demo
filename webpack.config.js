@@ -2,7 +2,7 @@ var path = require('path');
 
 module.exports = {
   entry: {
-    app: ['./react-no-redux/index.js'],
+    app: ['./react-redux/index.js'],
   },
   output: {
     path: path.resolve(__dirname, 'build'),
