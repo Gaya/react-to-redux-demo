@@ -1,22 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-import Events from '../core/events';
+import { favouriteContact } from '../actions/contact';
 
-export default React.createClass({
-  getInitialState() {
-    return {
-      on: this.props.on || false,
-    };
-  },
-
+const FavouriteSwitch = React.createClass({
   onChange() {
-    var changeTo = !this.state.on;
+    var changeTo = !this.props.on;
 
-    Events.emit('changeFavourite', changeTo, this.props.contactId);
-
-    this.setState({
-      on: changeTo,
-    });
+    this.props.changeFavourite(this.props.contactId, changeTo);
   },
 
   classNames(isActive) {
@@ -24,9 +15,22 @@ export default React.createClass({
   },
 
   render() {
-    return <button type='button' onClick={this.onChange} className={this.classNames(this.state.on)}
+    return <button type='button' onClick={this.onChange} className={this.classNames(this.props.on)}
                    style={{ marginLeft: '20px', }}>
         <span className='glyphicon glyphicon-star' aria-hidden='true'></span>
       </button>;
   },
 });
+
+function mapDispatchToProps(dispatch) {
+  return {
+    changeFavourite(id, isActive) {
+      dispatch(favouriteContact(id, isActive));
+    },
+  };
+}
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(FavouriteSwitch);
