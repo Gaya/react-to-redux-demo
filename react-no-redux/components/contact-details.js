@@ -9,6 +9,7 @@ import Twitter from './twitter-input';
 export default React.createClass({
   getInitialState() {
     return {
+      id: null,
       loading: true,
       name: null,
       favourite: false,
@@ -29,7 +30,11 @@ export default React.createClass({
     Events.removeListener('changeFavourite', this.handleFavourite);
   },
 
-  handleFavourite(isActive) {
+  handleFavourite(isActive, contactId) {
+    if (contactId !== this.state.id) {
+      return null;
+    }
+
     this.setState({
       favourite: isActive,
     });
