@@ -5,7 +5,7 @@ export default props => (
   <section>
     <h1>Contacts in React</h1>
     <nav className='navbar navbar-default'>
-      <ul className='nav navbar-nav'>
+      <ul className='nav'>
         <li>
           <Link to='/contacts'>View contacts</Link>
         </li>

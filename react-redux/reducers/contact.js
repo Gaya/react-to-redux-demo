@@ -32,7 +32,7 @@ const favourite = (state = false, action) => {
   }
 };
 
-const twitter = (state = null, action) => {
+const twitter = (state = '', action) => {
   switch (action.type) {
     case 'CHANGE_TWITTER':
       return action.handle;
