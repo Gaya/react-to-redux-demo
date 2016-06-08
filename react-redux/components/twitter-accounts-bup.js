@@ -1,25 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const TwitterAccount = ({ accounts }) => (
+const TwitterAccount = ({ accounts = [] }) => (
   <section>
-    <h2>Contacts with a Twitter account</h2>
-    {accounts.map(account => <span key={account}>{ account } </span>)}
+    <h2>Contact with Twitter</h2>
+
+    {accounts.map(account => <span key={account}>{account}, </span>)}
   </section>
 );
 
-function twitterAccountsFromContacts(contacts) {
-  return contacts.filter(contact =>
-    typeof contact.twitter === 'string' && contact.twitter !== '')
-    .map(contact => contact.twitter);
-}
-
 function mapStateToProps(state) {
   return {
-    accounts: twitterAccountsFromContacts(state.contacts.items),
+    accounts: state.contacts.items
+      .filter(contact => contact.twitter !== '')
+      .map(contact => contact.twitter),
   };
-}
+};
 
 export default connect(
-  mapStateToProps,
+  mapStateToProps
 )(TwitterAccount);
