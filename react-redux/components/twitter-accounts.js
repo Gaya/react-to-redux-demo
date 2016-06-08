@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 
 const TwitterAccount = ({ accounts }) => (
   <section>
-    {accounts.map(account => <span key={account}>{ account },</span>)}
+    <h2>Contacts with a Twitter account</h2>
+    {accounts.map(account => <span key={account}>{ account } </span>)}
   </section>
 );
 
